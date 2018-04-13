@@ -1,6 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/styles.scss';
-import MainToDoApp from './components/mainToDo'
+import { component } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import ReduxPromise from 'redux-promise'
+import WeatherReport from '../components/main'
+import reducers from '../reducers'
 
-ReactDOM.render(<MainToDoApp />, document.getElementById('app'));
+const createStoreWithMiddleWare = applyMiddleware(ReduxPromise)(createStore);
+
+ReactDOM.render(
+    <Provider store={createStoreWithMiddleWare(reducers)}>
+     <WeatherReport />
+  </Provider>,
+ document.getElementById('app'));
