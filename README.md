@@ -9,3 +9,4 @@ run in CMD prompt yarn run dev-server
 you will get application in http://localhost:8080/
 >>>>>>> 8850850b988a1df3c8df514da0a8da94dcb69e54
 # WeatherReport
+# Weather-List
