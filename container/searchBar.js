@@ -7,53 +7,96 @@ import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import axios from 'axios';
+import Dialog from 'material-ui/Dialog';
 
 const style = {
     margin: 12,
     customWidth: {
-        width: 200,
+        width: 300,
       },
   };
 
 class SearchBar extends React.Component {
     constructor (props) {
         super(props)
-        this.state = {term :''}
+        this.state = {
+            term :'',
+            country:[],
+            countryCode:'',
+            dialogopen: false,
+        }
         
         this.inputChangeEvent = this.inputChangeEvent.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.onErrorSubmit = this.onErrorSubmit.bind(this)
     }
 
+    componentDidMount() {
+        fetch('http://country.io/names.json')
+            .then(response => {
+                return response.json();
+            }).then(data => {
+          
+            this.setState({
+                country: data
+            });
+        });
+    }
+
+     
     inputChangeEvent (event) {
         this.setState({term : event.target.value})
     }
 
+    handleChange(item) {
+        console.log(item.target.value)
+        this.setState({countryCode:item.target.value})
+    }
     onFormSubmit (e) {
         e.preventDefault();
-        this.props.fetchWeather(this.state.term);
+        this.props.fetchWeather(this.state.term, this.state.countryCode);
         this.setState({term : ''})
     }
 
+    onErrorSubmit(erroCode) {
+       alert(code);
+        //return erroCode
+    }
+
+    handleOpen = () => {
+        this.setState({open: true});
+      };
+    
+      handleClose = () => {
+        this.setState({open: false});
+      };
+    
+
     render () {
+         let country = this.state.country;
+         let optionItems = Object.keys(country).map((countryList) =>
+                <option value={countryList} key={countryList}>{country[countryList]}</option>
+               // <MenuItem key={countryList} value={countryList} primaryText={country[countryList]} />
+            );
+
         return (
-            <form className="input-group" onSubmit={this.onFormSubmit}>
-            <DropDownMenu 
-            value={this.state.value} 
-            onChange={this.handleChange}
-            >
-            <MenuItem value={1} primaryText="Never" />
-            <MenuItem value={2} primaryText="Every Night" />
-            <MenuItem value={3} primaryText="Weeknights" />
-            <MenuItem value={4} primaryText="Weekends" />
-            <MenuItem value={5} primaryText="Weekly" />
-            </DropDownMenu> 
+            <form className="input-group" onSubmit={this.onFormSubmit} value={this.state.country.length}>
+            <span className="country_list"> Country : </span>
+            <div className="country_select">
+                <select className="mdl-selectfield__select" onChange={this.handleChange}>
+                    <option>Select the Country</option>
+                    {optionItems}
+                </select>
+            </div>
             <TextField 
                hintText="Search the City"  
                value = {this.state.term}
                onChange={this.inputChangeEvent}
                style={style.customWidth}
             />
-            
+        
             <span>
                 <RaisedButton type="submit" label="Search" secondary={true} style={style} />
             </span>

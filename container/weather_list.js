@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from '../components/charts'
-import MyMapComponent from '../components/google_map'
+import MyMapComponent from '../components/google_map';
+import Dialog from 'material-ui/Dialog';
 
 
 class WeatherList extends React.Component {
-   
-    getWeather (data) { 
+    constructor (props) {
+        super(props)
+        this.state = {
+            dialogopen: false,
+        }
+    }
+    getWeather (data) {
         const temp = data.list.map(weather => weather.main.temp);
         const minTemp = data.list.map(mintemp => mintemp.main.temp_min);
         const maxTemp = data.list.map(maxtemp => maxtemp.main.temp_max);
         const {lat, lon} = data.city.coord;
+        const population = data.city.population;
        
         return (
-            <div key={data.city.id}>
+            <div key={data.city.id} className="result_heading">
             <div  className="table_row">
                 <MyMapComponent 
                 lat={lat} 
@@ -23,8 +30,7 @@ class WeatherList extends React.Component {
                 containerElement={<div style={{ height: `200px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 />
-                
-                </div>
+            </div>
             <div className="temp_graph">
                 <div>
                     <div className="my_graph">
@@ -35,6 +41,10 @@ class WeatherList extends React.Component {
                     </div>
                </div>
             </div>
+
+            <div className="pop_table_row">
+                {population}
+            </div>
             
         </div>
 
@@ -42,10 +52,11 @@ class WeatherList extends React.Component {
     }
     render(){
         return (
-            <section> 
+            <section className="weather_list"> 
                 <div className ="header_row">
                     <div className="row_heading">City</div>
                     <div className="row_heading">Temprature</div>
+                    <div className="pop_heading">Population</div>
                     
                 </div>
                 <div>
