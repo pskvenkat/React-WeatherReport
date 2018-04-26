@@ -2,7 +2,7 @@
 # Clone the Repo 
 run in the server in CMD "yarn run dev-server" in local host "http://localhost:8080/" you will get the page
 
-![alt text](eather-report-openpage.png " open screen")
+![On Page load screen](Weather-report-openpage.png " open screen")
 
 # Weather report accross the Globe. 
 
