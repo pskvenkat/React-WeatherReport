@@ -4,9 +4,6 @@ https://github.com/pskvenkat/React-WeatherReport.git
 
 run in the server in CMD "yarn run dev-server" in local host "http://localhost:8080/" you will get the page
 
-![On Page load screen](Weather-report-openpage.png " open screen")
-
-
 ![Result Page](Weather-report-view page.png "result Screen")
 
 
