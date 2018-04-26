@@ -1,10 +1,13 @@
-# Global-WeatherReport
+# Global-Weather Report developed using - React, Redux and material UI
+
 # Clone the Repo 
 https://github.com/pskvenkat/React-WeatherReport.git
 
-run in the server in CMD "yarn run dev-server" in local host "http://localhost:8080/" you will get the page
+run "yarn run dev-server" in local host "http://localhost:8080/" you will get the page
+
 
 ![On Page load screen](Weather-report-openpage.png " open screen")
+
 
 # Steps to get Weather Report
 
