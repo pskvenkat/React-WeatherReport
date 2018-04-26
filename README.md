@@ -22,4 +22,4 @@ Average Minimum and Maximum Temprature calcultaed.
 
 Total Population shows for the city
 
-![Result Page](Weather-report-view page.png " result screen")
+![Result Page](Weather-report-view page.png "result Screen")
