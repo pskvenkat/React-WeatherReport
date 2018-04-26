@@ -6,6 +6,10 @@ run in the server in CMD "yarn run dev-server" in local host "http://localhost:8
 
 ![On Page load screen](Weather-report-openpage.png " open screen")
 
+
+![Result Page](Weather-report-view page.png "result Screen")
+
+
 # Steps to get Weather Report
 
 1. select the country first 
@@ -22,4 +26,3 @@ Average Minimum and Maximum Temprature calcultaed.
 
 Total Population shows for the city
 
-![Result Page](Weather-report-view page.png "result Screen")
