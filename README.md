@@ -6,13 +6,14 @@ run in the server in CMD "yarn run dev-server" in local host "http://localhost:8
 
 ![On Page load screen](Weather-report-openpage.png " open screen")
 
-# Steps to get the weather
+# Steps to get Weather Report
 
 1. select the country first 
 
 2. Enter the City for the corresponding country
 
-#result
+# Result
+
 City name shows as in Google map
 
 Temprature shows in SVG Chart
