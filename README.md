@@ -3,7 +3,7 @@
 # Clone the Repo 
 https://github.com/pskvenkat/React-WeatherReport.git
 
-# "yarn run dev-server"
+in CMD run # "yarn run dev-server"
 
 "http://localhost:8080/" you will get the page
 
